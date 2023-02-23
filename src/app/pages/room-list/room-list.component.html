@@ -1,0 +1,68 @@
+<div class="roomList">
+  <div class="roomList__wrapper">
+    <h1 class="roomList__title">Список комнат</h1>
+    <div class="roomList__content">
+      <div class="roomList__noRoom" *ngIf="!roomList.length">
+        В данный момент открытых комнат нет
+      </div>
+      <div class="roomList__navigate">
+        <button pButton pRipple type="button" label="Назад" class="p-button-outlined p-button-secondary" (click)="navigate('/')" *ngIf="!loadingRefresh"></button>
+        <p-progressSpinner [style]="{width: '35px', height: '35px'}" styleClass="roomList__loading" *ngIf="loadingRefresh"></p-progressSpinner>
+        <button pButton pRipple type="button" label="Обновить" class="p-button-outlined" (click)="refresh()" *ngIf="!loadingRefresh"></button>
+      </div>
+      <div class="roomList__table" *ngIf="roomList.length">
+        <p-table [value]="roomList" class="table" styleClass="p-datatable-striped" [paginator]="true" [rows]="5" [showCurrentPageReport]="true"
+                 currentPageReportTemplate="Показаны от {first} до {last} из {totalRecords} записей" [rowsPerPageOptions]="[5,10,25,50]">
+          <ng-template pTemplate="header">
+            <tr>
+              <th class="table__cell">Guid комнаты</th>
+              <th class="table__cell">Название комнаты</th>
+              <th class="table__cell">Количество игроков</th>
+              <th class="table__cell">Статус комнаты</th>
+              <th class="table__cell"></th>
+            </tr>
+          </ng-template>
+          <ng-template pTemplate="body" let-room>
+            <tr>
+              <td class="table__cell">{{room.guid}}</td>
+              <td class="table__cell">{{room.name}}</td>
+              <td class="table__cell">{{room.players}}/15</td>
+              <td class="table__cell">{{room.status}}</td>
+              <td class="table__cell">
+                <button pButton pRipple type="button" label="Подключиться" class="p-button-raised" (click)="connectRoom(room.guid)"></button>
+              </td>
+            </tr>
+          </ng-template>
+        </p-table>
+      </div>
+      <div class="roomList__connect connect">
+        <div class="connect__wrapper">
+          <div class="connect__title">Подключиться по guid</div>
+          <hr>
+          <form class="connect__params" [formGroup]="connectForm">
+            <input type="text" pInputText placeholder="guid" formControlName="guid"/>
+            <button pButton pRipple type="button" label="Подключиться (пока не работает)" class="p-button-raised" [disabled]="!connectForm.valid" (click)="connectRoom()"></button>
+            <small class="p-error block" *ngIf="connectForm.invalid">В поле должен быть guid</small>
+            <p-progressSpinner [style]="{width: '35px', height: '35px'}" styleClass="roomList__loading" *ngIf="loadingCreate"></p-progressSpinner>
+          </form>
+        </div>
+      </div>
+      <button pButton pRipple type="button" label="Создать комнату" class="p-button-raised romeList__create" (click)="changeStateCreateOpen()" *ngIf="!isOpenCreateRoom"></button>
+      <div class="romeList__createParams createRoom" *ngIf="isOpenCreateRoom">
+        <div class="createRoom__wrapper">
+          <div class="createRoom__header">
+            <div class="createRoom__title">Создание комнаты</div>
+            <button pButton pRipple type="button" label="Cвернуть" class="p-button-outlined p-button-secondary createRoom__close" (click)="changeStateCreateOpen()"></button>
+          </div>
+          <hr>
+          <form class="createRoom__params" [formGroup]="createForm" novalidate>
+            <input id="nameRoom" type="text" pInputText placeholder="Название комнаты" formControlName="name" class=""/>
+            <button pButton pRipple type="button" label="Создать комнату" class="p-button-raised" (click)="createRoom()" *ngIf="!loadingCreate" [disabled]="!createForm.valid"></button>
+            <small class="p-error block" *ngIf="createForm.invalid">Минимум 5 символов</small>
+            <p-progressSpinner [style]="{width: '35px', height: '35px'}" styleClass="roomList__loading" *ngIf="loadingCreate"></p-progressSpinner>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

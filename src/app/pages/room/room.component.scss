@@ -1,0 +1,76 @@
+.room {
+  color: #fff;
+  background-image: url("../../../accept/background1.jpg");
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+}
+
+.room__wrapper{
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100vh;
+}
+
+.room__title{
+  font-family: sans-serif;
+}
+
+.room__description{
+  font-weight: bold;
+}
+
+.room__navigate{
+  border: 1px solid silver;
+  padding: 10px;
+  cursor: pointer;
+
+  &:hover {
+    background-color: silver;
+  }
+}
+
+.person__description{
+  display: none;
+  background-color: silver;
+  position: absolute;
+  color: black;
+  top: -200px;
+  width: 320px;
+  text-align: left;
+  padding-left: 10px;
+}
+
+.person{
+  cursor: pointer;
+  position: absolute;
+  width: 200px;
+  height: 380px;
+  background-image: url("../../../accept/personLock.png");
+  background-size: 200px;
+
+  &:hover .person__description{
+    display: block;
+  }
+}
+
+.person_1{
+  left: 0;
+}
+.person_2{
+  left: 200px;
+}
+.person_3{
+  left: 400px;
+}
+.person_4{
+  left: 600px;
+}
+.person_5{
+  left: 800px;
+}
+.person_6{
+  left: 1000px;
+}

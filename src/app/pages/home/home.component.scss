@@ -1,0 +1,26 @@
+.header{
+  border: 1px solid silver;
+  padding: 0 15px;
+}
+
+.header{
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.home__item{
+  cursor: pointer;
+  padding: 15px;
+
+  &:hover {
+    background-color: silver;
+    color: #fff;
+  }
+}
+
+.home__content{
+  padding: 20px;
+  font-size: 20px;
+  color: #aaa;
+}

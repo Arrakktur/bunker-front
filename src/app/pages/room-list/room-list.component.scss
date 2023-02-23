@@ -1,0 +1,101 @@
+.roomList__wrapper{
+  padding-top: 20px;
+}
+
+.roomList__title{
+  text-align: center;
+}
+
+.roomList__content{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  width: max-content;
+  margin: 0 auto;
+}
+
+.table{
+  margin: 0 auto;
+}
+
+.table__cell{
+  padding: 5px;
+}
+
+.createRoom{
+  border: 1px solid silver;
+  width: 100%;
+}
+
+.createRoom__wrapper{
+  padding: 10px;
+}
+
+.createRoom__params{
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.createRoom__header{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.createRoom__title, .connect__title{
+  font-weight: bold;
+}
+
+.connect__title{
+  margin-bottom: 15px;
+}
+
+.createRoom__close{
+  cursor: pointer;
+
+  &:hover {
+    background-color: #eee;
+  }
+}
+
+.roomList__navigate{
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.roomList__noRoom{
+  color: #888;
+  font-size: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+.connect{
+  border: 1px solid silver;
+  width: 100%;
+}
+
+.connect__wrapper{
+  padding: 10px;
+}
+
+.connect__params{
+  margin-top: 20px;
+  display: flex;
+  gap: 20px;
+  align-items: center;
+}
+
+.roomList__loading{
+  height: 20px;
+}
+
+.createRoom__field{
+  display: flex;
+  flex-direction: column;
+}
