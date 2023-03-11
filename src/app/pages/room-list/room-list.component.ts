@@ -35,7 +35,11 @@ export class RoomListComponent implements OnInit {
           status: ERoomState[room.status],
         }
       });
-    });
+    },
+      (error: Error) => {
+        this.handleService.handleError(error);
+        this.loadingRefresh = false;
+      });
     this.createForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(5)]],
     });
@@ -93,13 +97,17 @@ export class RoomListComponent implements OnInit {
     this.loadingRefresh = true;
     this.apiService.getAllRoom().subscribe((roomList) => {
       this.roomList = roomList.map((room) => {
-        return {
-          ...room,
-          status: ERoomState[room.status],
-        }
-      });
-      this.loadingRefresh = false;
-    })
+          return {
+            ...room,
+            status: ERoomState[room.status],
+          }
+        });
+        this.loadingRefresh = false;
+    },
+      (error: Error) => {
+        this.handleService.handleError(error);
+        this.loadingRefresh = false;
+      })
   }
 
   connectRoom(guid: string = this.createForm.get('guid')?.value) {

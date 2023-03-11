@@ -1,0 +1,14 @@
+<div class="signUp">
+  <div class="signUp__wrapper">
+    <h1>Регистрация</h1>
+    <div class="signUp__content">
+      <form [formGroup]="regForm" class="signUp__form">
+        <input type="text" pInputText placeholder="Логин" formControlName="login"/>
+        <input type="text" pInputText placeholder="Имя" formControlName="name"/>
+        <input type="password" pPassword placeholder="Пароль" formControlName="password"/>
+        <button pButton pRipple type="button" label="Войти" class="p-button-raised" [disabled]="!regForm.valid" (click)="registration()"></button>
+        <button pButton pRipple type="button" label="Назад" class="p-button-outlined p-button-secondary" (click)="navigate('/sign-in')"></button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -17,6 +17,9 @@ import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {WebSocketService} from "./services/web-socket.service";
 import {SocketIoModule} from "ngx-socket-io";
 import {webSocketConfig} from "./constants/websocket.config";
+import { AuthComponent } from './pages/auth/auth.component';
+import { SignInComponent } from './pages/auth/sign-in/sign-in.component';
+import {AuthModule} from "./pages/auth/auth.module";
 
 @NgModule({
   declarations: [
@@ -36,6 +39,7 @@ import {webSocketConfig} from "./constants/websocket.config";
     InputTextModule,
     ButtonModule,
     BrowserAnimationsModule,
+    AuthModule,
     SocketIoModule.forRoot(webSocketConfig)
   ],
   providers: [WebSocketService],

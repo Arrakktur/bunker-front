@@ -1,0 +1,14 @@
+<div class="signIn">
+  <div class="signIn__wrapper">
+    <h1>Авторизация</h1>
+    <div class="signIn__content">
+      <form [formGroup]="authForm" class="signIn__form">
+        <input type="text" pInputText placeholder="Логин" formControlName="login"/>
+        <input type="password" pPassword placeholder="Пароль" formControlName="password"/>
+        <button pButton pRipple type="button" label="Войти" class="p-button-raised" [disabled]="!authForm.valid" (click)="login()"></button>
+        <button pButton pRipple type="button" label="Регистрация" class="p-button-outlined" (click)="navigate('/sign-up')"></button>
+        <button pButton pRipple type="button" label="Назад" class="p-button-outlined p-button-secondary" (click)="navigate('')"></button>
+      </form>
+    </div>
+  </div>
+</div>

@@ -8,6 +8,10 @@ export class HandleService {
   constructor() { }
 
   handleError(error: Error){
-    alert(error);
+    if (error.name){
+      alert(error.name + '\n' + error.message);
+    } else {
+      alert(error);
+    }
   }
 }

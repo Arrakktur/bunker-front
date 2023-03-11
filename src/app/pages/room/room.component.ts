@@ -30,9 +30,6 @@ export class RoomComponent implements OnInit {
       this.guid = guid;
     })
     this.webSocketService.create();
-    // this.webSocketService.getMessage().subscribe((data) => {
-    //   console.log(data);
-    // })
     this.webSocketService.connectRoom({
       token: this.authorizationService.token,
       guidRoom: this.guid,
